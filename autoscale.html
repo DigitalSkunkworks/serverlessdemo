@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Innovation Labs</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    
+
+    <style>
+      body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+    </style>
+
+<script type="text/javascript">
+  function SwapDivs(div)
+  {
+     console.log(div);
+     d1 = document.getElementById('test1');
+     aci = document.getElementById('test2');
+
+     if(div == 'test1')
+     {
+      d1.style.display = "block";
+      aci.style.display = "none";
+     }
+     else if(div == 'test2')
+     {
+      d1.style.display = "none";
+      aci.style.display = "block";
+     }
+  }
+  </script>
+  
+  
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Innovation Demos</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Demo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-3">
+          <h1 class="my-4">Demos</h1>
+          <div class="list-group">
+            <a href="#" class="list-group-item">Kubernetes</a>
+            <a href="#" class="list-group-item active">Virtual Kubelet - ACI</a>
+            <a href="#" class="list-group-item">Istio</a>
+            <a href="#" class="list-group-item">Sentiment Analysis</a>
+          </div>
+        </div>
+        <!-- /.col-lg-3 -->
+
+        <div id="test1" class="col-lg-9" style="display: block;">
+
+          <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-4">Kubernetes - Autoscaling</h1>
+              <p class="lead">Autoscaling automatically scales up or down workloads based on the resource usage.  Horizontal Pod Autoscaler (HPAv2) automatically scales the number of pods (scale up / scale down) in a deployment, replica set or replication controller based on core metrics (CPU and memory) and/or custom metrics (such as HTTP requests).  If a service experiences a sudden traffic burst, Kubernetes will automatically increase the number of servicing pods, thereby improving the service quality. When the demand is over it will downsize again, reducing the operative costs.</p>
+              </div>
+            </div>
+          </div>
+          <!-- /.jumbotron -->
+
+          <main>
+            <h1>Overview</h1>
+              <p>This demonstration uses custom metrics collected by Prometheus to automatically increase or decrease pod count based on current HTTP request demand.  The Horizontal Pod Autoscaler does this by periodically quering the Prometheus HTTP Requests metric, comparing it against the desired target value and then adjusting accordingly. To provide further control, the minimum and maximum number of pods and scaling cooldown/delay periods have also been configured. This is to avoid sudden bursts of containers rapidly spawning and terminating, also known as thrashing.</p>
+           <h1>Architecture</h1>
+             <p>Within Kubernetes, core and custom metrics are API definitions in the aggregate layer rather than implementations which allows the underlying software stack to change. The Horizontal Pod Autoscaler is implemented as a control loop that periodically queries the Resource Metrics API for core metrics like CPU/memory and the Custom Metrics API for application-specific metrics.</p>
+             <img src="c:\images\hpa-overview.png" class="img-fluid" alt="Responsive image">
+             <p>Core Metrics.</p>
+             <p>The Kubernetes Metrics Server is a cluster-wide aggregator of resource usage data and is the successor of Heapster. The Metrics Server collects CPU and memory usage for nodes and pods by pooling data from the kubernetes.summary_api. The summary API is a memory-efficient API for passing data from Kubelet/cAdvisor to the metrics server.</p>
+             <img src="c:\images\metrics-server.png" class="img-fluid" alt="Responsive image">
+             <p>Custom Metrics.</p>
+             </p>To scale based on custom metrics requires two components.  The first component, Prometheus in this instance, collects metrics from the applications and stores them in its time series database; whilst the second component, k8s-prometheus-adapter, extends the Kubernetes custom metrics API with the metrics supplied by the collect.</p>
+             <img src="c:\images\custom metrics.png" class="img-fluid" alt="Responsive image">
+            </br></br>
+            </main>
+
+        </div>
+        <!-- /.col-lg-9 -->
+
+      </div>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Innovation Labs - Know No Bounds&copy; Serverless website hosted using Riff on Kubernetes</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+  </body>
+
+</html>
