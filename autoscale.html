@@ -91,7 +91,7 @@
               <p>This demonstration uses custom metrics collected by Prometheus to automatically increase or decrease pod count based on current HTTP request demand.  The Horizontal Pod Autoscaler does this by periodically quering the Prometheus HTTP Requests metric, comparing it against the desired target value and then adjusting accordingly. To provide further control, the minimum and maximum number of pods and scaling cooldown/delay periods have also been configured. This is to avoid sudden bursts of containers rapidly spawning and terminating, also known as thrashing.</p>
            <h1>Architecture</h1>
              <p>Within Kubernetes, core and custom metrics are API definitions in the aggregate layer rather than implementations which allows the underlying software stack to change. The Horizontal Pod Autoscaler is implemented as a control loop that periodically queries the Resource Metrics API for core metrics like CPU/memory and the Custom Metrics API for application-specific metrics.</p>
-             <img src="c:\images\hpa-overview.png" class="img-fluid" alt="Responsive image">
+             <img src="https://digitalteamstorage.blob.core.windows.net/images/hpa-overview.png" class="img-fluid" alt="Responsive image">
              <p>Core Metrics.</p>
              <p>The Kubernetes Metrics Server is a cluster-wide aggregator of resource usage data and is the successor of Heapster. The Metrics Server collects CPU and memory usage for nodes and pods by pooling data from the kubernetes.summary_api. The summary API is a memory-efficient API for passing data from Kubelet/cAdvisor to the metrics server.</p>
              <img src="c:\images\metrics-server.png" class="img-fluid" alt="Responsive image">
