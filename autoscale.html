@@ -26,29 +26,7 @@
   }
 }
 
-    </style>
-
-<script type="text/javascript">
-  function SwapDivs(div)
-  {
-     console.log(div);
-     d1 = document.getElementById('test1');
-     aci = document.getElementById('test2');
-
-     if(div == 'test1')
-     {
-      d1.style.display = "block";
-      aci.style.display = "none";
-     }
-     else if(div == 'test2')
-     {
-      d1.style.display = "none";
-      aci.style.display = "block";
-     }
-  }
-  </script>
-  
-  
+    </style> 
 
   </head>
 
@@ -90,15 +68,15 @@
         <div class="col-lg-3">
           <h1 class="my-4">Demos</h1>
           <div class="list-group">
-            <a href="#" class="list-group-item">Kubernetes</a>
-            <a href="#" class="list-group-item active">Virtual Kubelet - ACI</a>
-            <a href="#" class="list-group-item">Istio</a>
+            <a href="https://kdbexr8frj.execute-api.eu-west-2.amazonaws.com/prod/?page=kubernetes" class="list-group-item">Kubernetes</a>
+            <a href="https://kdbexr8frj.execute-api.eu-west-2.amazonaws.com/prod/?page=aci" class="list-group-item">Virtual Kubelet - ACI</a>
+            <a href="#" class="list-group-item active">Autoscaling</a>
             <a href="#" class="list-group-item">Sentiment Analysis</a>
           </div>
         </div>
         <!-- /.col-lg-3 -->
 
-        <div id="test1" class="col-lg-9" style="display: block;">
+        <div class="col-lg-9">
 
           <div class="jumbotron jumbotron-fluid">
             <div class="container">
@@ -135,7 +113,7 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Innovation Labs - Know No Bounds&copy; Serverless website hosted using Riff on Kubernetes</p>
+        <p class="m-0 text-center text-white">Innovation Labs - Know No Bounds&copy; Serverless website hosted on AWS Lambda</p>
       </div>
       <!-- /.container -->
     </footer>
